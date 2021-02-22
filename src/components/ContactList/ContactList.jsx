@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import s from './ContactList.module.css';
 
@@ -30,5 +31,18 @@ function ContactList({ contacts, filterValue, deleteCOntact }) {
     </ul>
   );
 }
+
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }),
+  ),
+
+  filterValue: PropTypes.string.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};
 
 export default ContactList;
